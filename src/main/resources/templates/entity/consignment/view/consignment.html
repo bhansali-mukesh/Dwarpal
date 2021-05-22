@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<title th:text="${title}"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+    
+		    <div layout:replace="view/_header"></div>
+		
+			<table name="printable">
+				<tr th:if="${consignment.deleted != true}">
+					<td><div layout:replace="entity/consignment/goods_return(consignment=${consignment})"></div></td>
+					<td><div layout:replace="entity/consignment/delete(consignment=${consignment})"></div></td>
+					<td><div layout:replace="entity/consignment/edit(consignment=${consignment})"></div></td>
+				</tr>
+			</table>
+			
+		    <table border="1" th:object="${consignment}">
+		    	
+			    <tr>
+					<td> ID </td>
+					<td th:text="*{id}" />
+				</tr>
+		
+			    <tr>
+					<td> DATE </td>
+					<td><div layout:replace="forms/account/date(date=*{date})"></div></td>
+				</tr>
+		
+		    	<tr>
+			    	<td> SENDER </td>
+			    	<td><div layout:replace="forms/account/organization(organization=*{sender})"></div></td>
+			    </tr>
+		
+		        <tr>
+		            <td> RECEIVER </td>
+		            <td><div layout:replace="forms/account/organization(organization=*{receiver})"></div></td>
+		        </tr>
+		        
+		        <tr>
+		        	<td> LOT </td>
+		        	<td>
+					    <table border="1" id="lots" th:object="${lots.list}" th:if="${!lots.list.empty}">
+					    <tr>
+					    	<th> ITEM </th>
+					    	<th> NAME </th>
+					    	<th> COLOR </th>
+					    	<th> SIZE </th>
+					    	<th> TYPE </th>
+					    	<th> QUANTITY </th>
+					    	<th> AMOUNT </th>
+					    	<th> AGENT </th>
+					    </tr>
+					    	<th:block th:each="lot : ${lots.list}">
+						    	<tr>
+						    		<td><div layout:replace="forms/account/inventory(inventory=${lot.inventory})"></div></td>
+					    			<td th:text="${lot.inventory.name}" />
+					    			<td th:text="${lot.inventory.color}" />
+					    			<td th:text="${lot.inventory.size}" />
+					    			<td th:text="${lot.inventory.type}" />
+					    			<td th:text="${lot.quantity}" />
+					    			<td th:text="${lot.amount}" />
+					    			<td th:if="${lot.agent}" th:text="${lot.agent.nickName != '' ? lot.agent.nickName : lot.agent.fullName}" />
+					    			<td th:if="${lot.agent == null}" th:text="NONE" />
+					    			<!--td th:text="${#aggregates.sum(lots.list.![quantity])}" /-->
+						        </tr>
+						    </th:block>
+					    </table>
+					</td>
+				</tr>
+				
+		        <tr>
+		    		<td> COMMENT </td>
+		    		<td th:text="*{comment}" />
+		    	</tr>
+		    	
+		    	 <tr>
+			    	<td> TYPE </td>
+			    	<td><div layout:replace="forms/consignment/type(type=*{type})"></div></td>
+			    	<!--td th:text="*{type}" /-->
+			    </tr>
+		    
+			    <tr>
+			    	<td> HISTORY </td>
+			    	<td th:if="*{previousConsignment}"><div layout:replace="forms/consignment/consignment(consignment=*{previousConsignment})"></div></td>
+			    	<td  th:if="*{previousConsignment == null}" th:text="NONE" />
+			    </tr>
+		    
+		 </table>
+	 
+		 <div layout:replace="view/_footer"></div>
+	 </body>
+	 
+</html>

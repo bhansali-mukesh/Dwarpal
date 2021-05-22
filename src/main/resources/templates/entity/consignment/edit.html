@@ -1,0 +1,5 @@
+<form modelAttribute="consignment" th:action="@{/consignment/edit}" method="post">
+<input type="hidden" name="organization" th:value="${consignment.receiver.id}"/>
+	<input type="hidden" name="consignment" th:value="${consignment.id}"/>
+	<input type="submit" th:value="Edit"/>
+</form>

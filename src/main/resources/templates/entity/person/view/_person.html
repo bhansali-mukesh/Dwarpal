@@ -1,0 +1,17 @@
+
+    <div th:if="${person}" >
+		<table name="printable" th:if="${person}" th:object="${person}" border="1">
+			<tr>
+				<td th:text="*{fullName}"></td>
+				<td th:text="*{nickName}"></td>
+			</tr>
+			<tr>
+				<td th:text="*{gender}"></td>
+				<td th:if="*{dob}" th:text="*{#dates.format(dob, 'dd-MMM-yyyy')}"></td>
+			</tr>
+			<tr>
+				<td th:text="Agent"></td>
+				<td> <input type="checkbox" th:checked="*{agent}" /> </td>
+			</tr>
+		</table>
+    </div>

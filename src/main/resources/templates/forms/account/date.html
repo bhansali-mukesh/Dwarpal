@@ -1,0 +1,6 @@
+
+	<form method="post" action="\account\inventory\time">
+		<input type="hidden" name="start" th:value="${#dates.format(date, 'dd-MM-yyyy')}"/>
+		<input type="hidden" name="end" th:value="${#dates.format(date, 'dd-MM-yyyy')}"/>
+		<input type="submit" th:value="${#dates.format(date, 'dd-MMM-yyyy')}"/>
+	</form>

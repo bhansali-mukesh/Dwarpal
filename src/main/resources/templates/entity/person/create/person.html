@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+
+    <head>
+        <link rel="stylesheet" href="/css/styles.css"/>
+        <title th:text="${title}"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+
+    <body>
+    	<h1 th:text="${welcome}"></h1>
+    	
+    	<form name="person" th:action="@{/person}" th:method="post">
+    		<div layout:replace="entity/person/create/_person"></div>
+    		<input type="submit" value="Save"/>
+    	</form>
+    	    
+    </body>
+</html>

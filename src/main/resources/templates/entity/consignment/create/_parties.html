@@ -1,0 +1,24 @@
+
+<table>
+
+	    <tr>
+	    	<td>
+				<table border="1">
+					<tr>
+						<td>
+							<select name="sender" >
+								<option th:each="sender : ${senders}" th:value="${sender.id}" th:text="${sender.name}"></option>
+							</select>
+						</td>
+						
+						<td>
+							<select name="receiver" >
+								<option th:each="receiver : ${receivers}" th:value="${receiver.id}" th:text="${receiver.name}"></option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+    
+ </table>

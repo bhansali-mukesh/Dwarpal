@@ -1,0 +1,58 @@
+
+    <table th:object="${person}">
+       
+    	<tr>
+    		<td> <input type="hidden" th:field="*{id}" /> </td>
+    	</tr>
+    	
+    	<tr>
+            <td> First Name  </td>
+            <td> <input type="text" th:field="*{firstName}" /> </td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Name Error</td>
+        </tr>
+        <tr>
+            <td> Middle Name </td>
+            <td> <input type="text" th:field="*{middleName}" /> </td>
+            <td th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">Name Error</td>
+        </tr>
+        <tr>
+            <td> Last Name </td>
+            <td> <input type="text" th:field="*{lastName}" /> </td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Name Error</td>
+        </tr>
+        <tr>
+            <td> Nick Name </td>
+            <td> <input type="text" th:field="*{nickName}" /> </td>
+            <td th:if="${#fields.hasErrors('nickName')}" th:errors="*{nickName}">Name Error</td>
+        </tr>
+
+        <tr>
+            <td> Date Of Birth </td>
+            <td> <input id="dob" th:type="date" th:field="*{dob}" /> </td>
+            <td th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}">Date Error</td>
+        </tr>
+    
+        <tr>
+            <td> Gender </td>
+            <td>
+                <select th:field="*{gender}" >
+					<option th:each="gender : ${genders}" th:value="${gender.id}" th:text="${gender.name}"></option>
+				</select>
+			</td>
+            <td><a href="/create/gender" target="_blank"> Add </a></td>
+        </tr>
+        
+	    <tr>
+			<td th:text="Agent"></td>
+			<td> <input type="checkbox" name="role" th:field="*{agent}" th:checked="*{agent}" /> </td>
+		</tr>
+
+            <!--td>
+                <table id="deleted">
+                    <tr>
+                        <td> Deleted </td>
+                        <td> <input id="deleted" type="text" th:field="*{deleted}" th:value="false" /> </td>
+                    </tr>
+                </table>
+            </td-->
+    </table>

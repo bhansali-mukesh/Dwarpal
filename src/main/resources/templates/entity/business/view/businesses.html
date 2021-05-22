@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<title th:text="${title}"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+    	<div layout:replace="view/_header"></div>
+    	
+    	<table border="1">
+		    <tr>
+				<td colspan="3" align="right"><div layout:replace="entity/business/add"></div></td>
+			</tr>
+	
+    		<th:block th:each="business : ${businesses}">
+	    		<tr>
+	    			<td><div layout:replace="entity/business/view/_business"></div></td>
+	    			<td><div layout:replace="entity/business/edit"></div></td>
+	    			<td><div layout:replace="entity/business/delete"></div></td>
+	    		</tr>
+	    		
+    		</th:block>
+    	</table>
+    	
+    	<div layout:replace="view/_footer"></div>
+    </body>
+</html>

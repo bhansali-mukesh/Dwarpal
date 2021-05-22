@@ -1,0 +1,4 @@
+<form th:action="@{/view/category}" method="get">
+	<input type="hidden" name="id" th:value="${category.id}"/>
+	<input type="submit" th:value="${category.name}"/>
+</form>

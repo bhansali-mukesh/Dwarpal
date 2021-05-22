@@ -1,0 +1,10 @@
+
+    <div th:if="${gender}" >
+		<table name="printable" th:if="${gender}" th:object="${gender}" border="1">
+			<tr>
+				<td th:text="*{name}"></td>
+				<td th:text="*{description}"></td>
+			</tr>
+		
+		</table>
+    </div>

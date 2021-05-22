@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${title}"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+    	<h1 th:text="${welcome}"></h1>
+    	
+    	<form name="role" method="post" th:action="@{/role}">
+    		<div layout:replace="entity/role/create/_role"></div>
+    		<input type="submit" value="Add"/>
+    	</form>
+    	
+    </body>
+</html>

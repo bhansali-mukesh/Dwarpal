@@ -1,0 +1,4 @@
+<form modelAttribute="business" th:action="@{/create/business}" method="get">
+	<input type="hidden" name="business" th:value="${business.id}"/>
+	<input type="submit" th:value="Edit"/>
+</form>

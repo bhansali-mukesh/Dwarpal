@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${title}"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+    	<h1 th:text="${welcome}"></h1>
+    	
+    	<table>
+    		<tr><td><a href="/create/organization" target="_blank"> Add Organization </a></td></tr>
+    		<tr><td><a href="/create/type" target="_blank"> Add Inventory Type </a></td></tr>
+    		<tr><td><a href="/create/login" target="_blank"> Add Login </a></td></tr>
+    	</table>
+
+    </body>
+</html>

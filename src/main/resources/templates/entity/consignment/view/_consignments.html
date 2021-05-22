@@ -1,0 +1,21 @@
+
+<table name="printable" border="1" th:if="${!consignments.empty}">
+ 	<tr>
+ 		<th> ID </th>
+ 		<th> Date </th>
+ 		<th> Sender </th>
+ 		<th> Receiver </th>
+ 		<th> Comment </th>
+ 	</tr>
+ 	
+ 	<th:block th:each="consignment : ${consignments}">    
+    	<tr>
+    		<td><div layout:replace="forms/consignment(consignment=${consignment})"></div></td>
+    		<td><div layout:replace="forms/account/date(date=${consignment.date})"></div></td>
+    		<td><div layout:replace="forms/account/organization(organization=${consignment.sender})"></div></td>
+    		<td><div layout:replace="forms/account/organization(organization=${consignment.receiver})"></div></td>
+    		<td th:text="${consignment.comment}" />
+    	</tr>
+    </th:block>
+    
+</table>

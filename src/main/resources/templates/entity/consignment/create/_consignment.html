@@ -1,0 +1,74 @@
+<table>
+	
+		<tr th:object="${consignment}">
+	    	<td> <input type="hidden" th:field="*{id}" /> </td>
+	    </tr>
+
+		<tr th:object="${consignment}">
+			<td> DATE </td>
+			<td> <input type="date" th:field="*{date}" /> </td>
+			<td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</td>
+		</tr>
+
+		<tr>
+			<td> <div layout:replace="entity/consignment/create/_parties"></div> </td>
+		</tr>
+			
+		<tr>
+        	<td>
+			    <table width="75%" id="lots" th:object="${lots}" th:if="${!lots.list.empty}">
+			    	<tr>
+				    	<th> ITEM </th>
+				    	<th> NAME </th>
+				    	<th> COLOR </th>
+				    	<th> SIZE </th>
+				    	<th> TYPE</th>
+				    	<th> QUANTITY </th>
+				    	<th> AMOUNT </th>
+				    	<th> AGENT </th>
+					</tr>
+			    	<div th:each="lot, stat : *{list}">
+				    	<tr th:id="*{list[__${stat.index}__].inventory.item}">
+				    		<td style="display:none"> <input id="lotId" type="hidden" th:field="*{list[__${stat.index}__].id}" /> </td>
+				    		<td style="display:none"> <input id="inventoryID" type="hidden" th:field="*{list[__${stat.index}__].inventory.id}" /> </td>
+			    			<td> <input id="item" size="5%" type="text" th:field="*{list[__${stat.index}__].inventory.item}" /> </td>
+			            	<td> <input id="name" type="text" th:field="*{list[__${stat.index}__].inventory.detail.name}" /> </td>
+            				<td> <input id="color" type="text" th:field="*{list[__${stat.index}__].inventory.detail.color}" /> </td>
+            				<td> <input id="size" size="5%" type="text" th:field="*{list[__${stat.index}__].inventory.detail.size}" /> </td>
+            				<td>
+	                            <select id="types" th:field="*{list[__${stat.index}__].inventory.detail.type}" >
+	                            	<option th:value="0" th:text="NONE"/>
+	            					<option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+	            				</select>
+	            			</td>
+			            	<td> <input id="quantity" type="text" th:field="*{list[__${stat.index}__].quantity}" th:value="1" /> </td>
+			            	<td> <input id="amount" type="text" th:field="*{list[__${stat.index}__].amount}" th:value="0" /> </td>
+			            	
+			            	<td>
+	                            <select id="agents" th:field="*{list[__${stat.index}__].agent}" >
+	                            	<option th:value="0" th:text="NONE"/>
+	            					<option th:each="agent : ${agents}" th:value="${agent.id}" th:text="${agent.nickName != '' ? agent.nickName : agent.fullName}"></option>
+	            				</select>
+	            			</td>
+            			
+			            	<td> <input id="Add" type="button" value="+" onclick="AddLot(this);" /> </td>
+			            	<td style="display:none;"> <input id="Remove" type="button" value="X" onclick="RemoveLot(this.parentElement.parentElement);" /> </td>
+				        </tr>
+				    </div>
+			    </table>
+			</td>
+		</tr>
+		
+		<tr th:object="${consignment}">
+        	<td> COMMENT </td>
+        	<td> <input type="text" th:field="*{comment}" /> </td>
+        	<td th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">Comment Error</td>
+        </tr>
+    
+        <tr th:object="${consignment}">
+	    	<td> <input type="hidden" th:field="*{type}" th:value="*{type}"/> </td>
+	    	<td> <input type="hidden" th:field="*{deleted}" th:value="false"/> </td>
+	    	<td> <input type="hidden" th:field="*{previousConsignment}" th:value="*{previousConsignment}"/> </td>
+	    </tr>
+    
+    </table>

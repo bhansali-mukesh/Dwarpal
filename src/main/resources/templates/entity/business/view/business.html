@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<title th:text="${title}"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+    	<div layout:replace="view/_header"></div>
+    	
+    	<table>
+    		<tr>
+    			<td><div layout:replace="entity/business/view/_business"></div></td>
+    		</tr>
+    	</table>
+    	
+    	<div layout:replace="view/_footer"></div>
+    </body>
+</html>

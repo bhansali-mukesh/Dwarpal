@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<title th:text="${title}"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+    	<div layout:replace="view/_header"></div>
+    	
+    	<table border="1">
+	    	 <tr>
+				<td colspan="3" align="right"><div layout:replace="entity/person/add"></div></td>
+			</tr>
+		
+    		<th:block th:each="person : ${persons}">
+	    	
+	    		<tr>
+	    			<td><div layout:replace="entity/person/view/_person"></div></td>
+	    			<td><div layout:replace="entity/person/edit"></div></td>
+	    			<td><div layout:replace="entity/person/delete"></div></td>
+	    		</tr>
+	    		
+    		</th:block>
+    	</table>
+    	
+    	<div layout:replace="view/_footer"></div>
+    </body>
+</html>

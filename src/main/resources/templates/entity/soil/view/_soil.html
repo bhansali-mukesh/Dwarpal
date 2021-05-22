@@ -1,0 +1,11 @@
+
+    <div th:if="${soil}" >
+		<table name="printable" th:if="${soil}" th:object="${soil}" border="1">
+		
+			<tr>
+				<td th:text="*{name}"></td>
+				<td th:text="*{description}"></td>
+			</tr>
+		
+		</table>
+    </div>

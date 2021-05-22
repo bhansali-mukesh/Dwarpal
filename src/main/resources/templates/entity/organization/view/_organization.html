@@ -1,0 +1,38 @@
+
+    <div th:if="${organization}" >
+		<table name="printable" th:if="${organization}" th:object="${organization}" border="1">
+			<tr>
+				<td th:text="Name"/>
+				<td th:text="*{name}"/>
+			</tr>
+			<tr th:if="*{business}">
+				<td th:text="Business"/>
+				<td th:text="*{business}"/>
+			</tr>
+			<tr th:if="*{category}">
+				<td th:text="Category"/>
+				<td th:text="*{category}"/>
+			</tr>
+			<tr th:if="*{gst}">
+				<td th:text="GST"/>
+				<td th:text="*{gst}"/>
+			</tr>
+			<tr th:if="*{owner}">
+				<td th:text="Owner"/>
+				<td><div layout:replace="entity/person/view/_person(person=*{owner})"></div></td>
+			</tr>
+			<tr th:if="*{contact}">
+				<td th:text="Contact"/>
+				<td><div layout:replace="view/contact(contact=*{contact})"></div></td>
+			</tr>
+			<tr th:if="*{parent}">
+				<td th:text="Parent"/>
+				<td th:text="*{parent}"></td>
+			</tr>
+			<tr th:if="*{since}">
+				<td th:text="Since"/>
+				<td th:text="*{since}"></td>
+			</tr>
+			
+		</table>
+    </div>

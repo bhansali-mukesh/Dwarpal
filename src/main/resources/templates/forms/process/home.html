@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="Login"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+    	
+    	<div layout:replace="view/_header"></div>
+    
+	    <table>
+	    	<tr>
+	    		<td><div layout:replace="forms/home/send(login=${login}, consignmentType=2, label=Send, action='\consignment\send')"></div></td>
+	    		<td><div layout:replace="forms/home/receive(login=${login}, consignmentType=3, label=Receive, action='\consignment\receive')"></div></td>
+	    		<td><div layout:replace="forms/process/wip(login=${login})"></div></td>
+	    		<td><div layout:replace="forms/process/received(login=${login})"></div></td>
+	    		<td><div layout:replace="forms/process/processed(login=${login})"></div></td>
+			</tr>
+		</table>
+	
+    </body>
+
+</html>
