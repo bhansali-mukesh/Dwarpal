@@ -1,0 +1,45 @@
+
+    <form id="filters" th:action="@{/admin/view}" method="post" th:if="${filter}" th:object="${filter}">
+    
+    	<table>
+    	
+	    	<tr>
+	    		<td><input type="text" id="first" th:field="*{first}"></input></td>
+	  			<td><input type="text" id="middle" th:field="*{middle}"></input></td>
+	  			<td><input type="text" id="last" th:field="*{last}"></input></td>
+	  			<td><input type="text" id="nick" th:field="*{nick}"></input></td>
+	  			
+	  			<td><input type="text" id="gender" th:field="*{gender}"></input></td>
+	  		</tr>
+	  		
+	  		<tr>
+	    		<td><input type="text" id="date" th:field="*{date}"></input></td>
+	  			<td><input type="text" id="month" th:field="*{month}"></input></td>
+	  			<td><input type="text" id="year" th:field="*{year}"></input></td>
+	  		</tr>
+	  		
+	  		<tr>
+	    		<td><input type="text" id="course" th:field="*{course}"></input></td>
+	  			<td><input type="text" id="institute" th:field="*{institute}"></input></td>
+	  			<td><input type="text" id="passingYear" th:field="*{passingYear}"></input></td>
+	  		</tr>
+	  		
+	  		<tr>
+	    		<td><input type="text" id="gautra" th:field="*{gautra}"></input></td>
+	  			<td><input type="text" id="caste" th:field="*{caste}"></input></td>
+	  		</tr>
+	  		
+	  		<tr>
+	    		<td><input type="text" id="zip" th:field="*{zip}"></input></td>
+	  			<td><input type="text" id="soil" th:field="*{soil}"></input></td>
+	  		</tr>
+	  		
+	  		<tr>
+	  			<td><input type="text" id="occupation" th:field="*{occupation}"></input></td>
+	  		</tr>
+  		
+	  	</table>
+	  	
+	  	<input type="submit" value="Filter"> </input>
+	  	
+    </form>

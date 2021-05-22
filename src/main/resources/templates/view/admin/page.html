@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:label="${title}"></title>
+        <meta charset="UTF-8" />
+        <script src="/js/filter.js" > </script>
+    </head>
+
+    <body>
+    
+    	<table>
+    		<tr>
+    			<td>
+    				<div layout:replace="view/admin/filter"></div>
+    			</td>
+    		</tr>
+    		
+    		<tr>
+				<td>
+					<div layout:replace="view/admin/members"></div>
+					<!--div layout:replace="view/admin/filteredObjects"></div-->
+				</td>
+			</tr>
+    	</table>
+    	
+    </body>
+    
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+    	<title th:text="${title}"></title>
+    	<link rel="stylesheet" href="/css/styles.css"/>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+    
+    	<!--div layout:replace="view/_header"></div-->
+    
+    	<h1 th:text="${message}" />
+    
+	    <form method="post" action="/login">
+	    
+		    <table th:object="${login}" >
+			    <tr>
+			    	<td> Username </td>
+			    	<td> <input type="text" th:field="*{username}" /> </td>
+			    	<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+				</tr>
+				
+				<tr>
+			    	<td th:text="Password"/>
+			    	<td> <input type="password" th:field="*{password}" /> </td>
+			    	<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+				</tr>
+				
+				<tr>
+			    	<td th:text="Organization"/>
+			    	<td>
+				        <select th:field="*{organization}" >
+							<option th:each="organization : ${organizations}" th:value="${organization.id}" th:text="${organization.name}"></option>
+						</select>
+					</td>
+				</tr>
+			
+				<tr>
+					<td colspan="3"> <input type="submit" value="Login"/> </td>
+				</tr>
+			
+			</table>
+			
+	    </form>
+	
+	    <!--div layout:replace="view/_footer"></div-->
+	    
+    </body>
+
+</html>

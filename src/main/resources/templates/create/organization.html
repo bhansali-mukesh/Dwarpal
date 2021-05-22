@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+
+    <head>
+        <script src="/js/organization.js"></script>
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+	    <form name="organization" th:action="@{/organization}" th:object="${organization}" th:method="post">
+	        <input type="text" th:field="*{id}" />
+	        
+		    <table>
+			    <tr>
+			        <td> Name </td>
+			        <td> <input type="text" th:field="*{name}" /> </td>
+			        <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+			    </tr>
+			    
+			    <tr>
+	            	<td> Business </td>
+	            	 <td>
+	                     <select th:field="*{business}" >
+	     					<option th:each="business : ${businesses}" th:value="${business.id}" th:text="${business.name}"></option>
+	     				</select>
+	 				</td>
+	 				<td><a href="/create/business" target="_blank"> Add </a></td>
+			    </tr>
+			    
+			    <tr>
+			        <td> GST </td>
+			        <td> <input type="text" th:field="*{gst}" /> </td>
+			        <td th:if="${#fields.hasErrors('gst')}" th:errors="*{gst}">Name Error</td>
+			    </tr>
+		    
+			    <tr>
+			        <td> Owner </td>
+			        <td>
+	                    <select th:field="*{owner}" >
+	    					<option th:each="person : ${persons}" th:value="${person.id}" th:text="${person.fullName}"></option>
+	    				</select>
+					</td>
+					<td><a href="/create/person" target="_blank"> Add </a></td>
+			    </tr>
+		        
+		        <tr>
+			        <td>
+			        	<div layout:replace="create/_contact"></div>
+			        </td>
+			    </tr>
+			    
+			    <tr>
+			        <td> Parent </td>
+			        <td>
+	                    <select th:field="*{parent}" >
+	    					<option th:each="organization : ${organizations}" th:value="${organization.id}" th:text="${organization.name}"></option>
+	    				</select>
+					</td>
+					<td><a href="/create/organization" target="_blank"> Add </a></td>
+			    </tr>
+			    
+			    <tr>
+			        <td> Since </td>
+			        <td> <input id="since" type="text" th:field="*{since}" /> </td>
+			        <!--td> <input id="since" type="date" th:field="*{since}" /> </td-->
+			        <td th:if="${#fields.hasErrors('since')}" th:errors="*{since}">Since Error</td>
+			    </tr>
+			    
+			</table>
+			
+		    <input type="hidden" name="deleted" value="false"></input>
+		    <input type="submit" value="Save"/>
+	
+	    </form>
+	  
+	</body>
+</html>

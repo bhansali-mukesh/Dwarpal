@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:label="${title}"></title>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+    	<div th:if="${!members.empty}">
+			<th:block th:each="member : ${members}">
+          		
+          		<span th:object="${member.person}">
+	          		<input name="first" type="button" th:value="*{firstName}" onclick="addFilter(this);"></input>
+          			<input th:if="*{!middleName.empty}" name="middle" type="button" th:value="*{middleName}" onclick="addFilter(this);"></input>
+          			<input type="button" name="last" th:value="*{lastName}" onclick="addFilter(this);"></input>
+          			<input th:if="*{!nickName.empty}" name="nick" type="button" th:value="*{nickName}" onclick="addFilter(this);"></input>
+          			<input type="button" name="gender" th:value="*{gender.name}" onclick="addFilter(this);"></input>
+          		</span>
+          		
+          		<span th:if="*{member.education}" th:object="${member.education}">
+	          		<input name="course" type="button" th:value="*{course}" onclick="addFilter(this);"></input>
+	      			<input th:if="*{institute}" name="institute" type="button" th:value="*{institute}" onclick="addFilter(this);"></input>
+	      			<input th:if="*{passingYear}" name="passingYear" type="button" th:value="*{passingYear}" onclick="addFilter(this);"></input>
+	      		</span>
+      		
+          		<input th:if="${member.gautra}" name="gautra" type="button" th:value="${member.gautra.name}" onclick="addFilter(this);"></input>
+          		<input th:if="${member.occupation}" name="occupation" type="button" th:value="${member.occupation.name}" onclick="addFilter(this);"></input>
+      			
+          		<span th:if="*{member.location}" th:object="${member.location}">
+          			<span th:if="*{permanentAddress}" th:object="${member.location.permanentAddress}">
+          				<input th:if="*{zip}" name="zip" type="button" th:value="*{zip}" onclick="addFilter(this);"></input>
+          				<input th:if="*{soil}" name="soil" type="button" th:value="*{soil}" onclick="addFilter(this);"></input>
+      				</span>
+      				
+      				<span th:if="*{currentAddress}" th:object="${member.location.currentAddress}">
+	      				<input th:if="*{zip}" name="zip" type="button" th:value="*{zip}" onclick="addFilter(this);"></input>
+	      				<input th:if="*{soil}" name="soil" type="button" th:value="*{soil}" onclick="addFilter(this);"></input>
+	  				</span>
+	  				
+	  				<span th:if="*{workPlace}" th:object="${member.location.workPlace}">
+		  				<input th:if="*{zip}" name="zip" type="button" th:value="*{zip}" onclick="addFilter(this);"></input>
+		  				<input th:if="*{soil}" name="soil" type="button" th:value="*{soil}" onclick="addFilter(this);"></input>
+					</span>
+					
+					<input th:if="*{origin}" name="soil" type="button" th:value="*{origin}" onclick="addFilter(this);"></input>
+					
+      			</span>
+      			<div></div>
+			</th:block>
+        </div>
+        
+    </body>
+</html>

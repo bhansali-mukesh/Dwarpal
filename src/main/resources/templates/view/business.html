@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:label="${title}"></title>
+        <meta charset="UTF-8" />
+
+    </head>
+
+    <body>
+        <div th:if="${business}" th:object="${business}">
+            <table>
+                <tr>
+          			<td th:text="*{name}"> </td>
+					<td th:text="*{description}"> </td>
+					<td><div layout:replace="forms/category(category=*{category})"></div></td>
+				</tr>
+            </table>
+        </div>
+    </body>
+</html>

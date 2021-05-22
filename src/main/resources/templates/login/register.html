@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="Login"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+
+	    <form method="post" action="/login/register">
+	    
+		    <table th:object="${login}" >
+				<tr>
+		    		<td> <input type="hidden" th:field="*{id}" /> </td>
+		    	</tr>
+	    	
+			    <tr>
+			    	<td> Username </td>
+			    	<td> <input type="text" th:field="*{username}" /> </td>
+			    	<td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+				</tr>
+				
+				<tr>
+			    	<td th:text="Password"/>
+			    	<td> <input type="password" th:field="*{password}" /> </td>
+			    	<td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</td>
+				</tr>
+				<tr>
+					<td> Confirm Password </td>
+			    	<td> <input type="password" th:field="*{confirmPassword}" /> </td>
+			    	<td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Confirm Password Error</td>
+				</tr>
+				
+				<tr>
+			    	<td> Power Phrase </td>
+			    	<td> <input type="password" th:field="*{powerPhrase}" /> </td>
+			    	<td th:if="${#fields.hasErrors('powerPhrase')}" th:errors="*{powerPhrase}">Power Phrase Error</td>
+				</tr>
+				<tr>
+					<td> Confirm Power Phrase </td>
+			    	<td> <input type="password" th:field="*{confirmPowerPhrase}" /> </td>
+			    	<td th:if="${#fields.hasErrors('confirmPowerPhrase')}" th:errors="*{confirmPowerPhrase}">Confirm Power Phrase Error</td>
+				</tr>
+				
+				<tr>
+			    	<td th:text="Hint"/>
+			    	<td> <input type="text" th:field="*{hint}" /> </td>
+			    	<td th:if="${#fields.hasErrors('hint')}" th:errors="*{hint}">Hint Error</td>
+				</tr>
+				
+				<tr>
+			    	<td th:text="Organization"/>
+			    	<td>
+				        <select th:field="*{organization}" >
+							<option th:each="organization : ${organizations}" th:value="${organization.id}" th:text="${organization.name}"></option>
+						</select>
+					</td>
+				</tr>
+			
+			
+			    <tr>
+			    	<td th:text="Role"/>
+				    <td>
+				        <select th:field="*{role}" >
+							<option th:each="role : ${roles}" th:value="${role.key}" th:text="${role.name}"></option>
+						</select>
+					</td>
+					<td><a href="/create/role" target="_blank"> Add Role </a></td>
+				</tr>
+				
+				<!--tr>
+					<td>
+						<input  name="roles" type="checkbox" th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"/>
+					</td>
+				</tr-->
+				
+				<tr>
+			    	<td th:text="Expiry"/>
+			    	<td> <input th:type="date" th:field="*{expiry}" /> </td>
+				</tr>
+
+				<tr>
+					<td colspan="3"> <input type="submit" value="Register"/> </td>
+				</tr>
+			
+			</table>
+			
+			<!--input type="checkbox" th:each="role, stat : ${roles}" th:text="${role.name}" th:value="${role.id}" th:field="${roles}" /-->
+			
+	    </form>
+	
+    </body>
+
+</html>

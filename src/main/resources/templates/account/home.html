@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="Login"></title>
+        <link rel="stylesheet" href="/css/styles.css"/>
+        <meta charset="UTF-8" />
+
+    </head>
+
+    <body>
+    		
+    	<div layout:replace="view/_header"></div>
+    
+	    <table>
+	    	<tr>
+	    		<td>
+				    <form method="post" action="\account\inventories">
+						<input type="submit" value="Inventory"/>
+					</form>
+				</td>
+				
+				<td>
+				    <form method="post" action="\account\organizations">
+				        <input type="submit" value="Trading"/>
+				    </form>
+		    	</td>
+		    	
+		    	<td>
+					<form method="post" action="\account\inventory\time">
+				    	<input type="hidden" name="start" th:value="${#dates.format(date, 'yyyy-MM-dd')}" />
+				    	<input type="hidden" name="end" th:value="${#dates.format(date, 'yyyy-MM-dd')}" />
+				    	<input type="submit" name="account" th:value="Time" />
+			    	</form>
+				</td>
+				
+				<td><div layout:replace="forms/account/organization(organization=${swayam})"></div></td>
+
+			
+			</tr>
+		</table>
+	
+		<div layout:replace="view/_footer"></div>
+		
+    </body>
+
+</html>

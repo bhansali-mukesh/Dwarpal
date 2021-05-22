@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<link rel="stylesheet" href="/css/styles.css"/>
+		<title th:text="${title}"></title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</head>
+
+    <body>
+    
+	    <div layout:replace="view/_header"></div>
+	    
+		<table name="printable" border="1" id="WIPs" th:if="${!WIPs.empty}">
+		
+			<tr>
+				<th> ITEM </th>
+				<th> NAME </th>
+		    	<th> COLOR </th>
+	            <th> SIZE </th>
+	        	<th> TYPE </th>
+	        	<th> QUANTITY </th>
+	        </tr>
+	    
+	        <tr>
+		    	<th:block th:each="wip : ${WIPs}">
+		    		<tr>
+		    			<td><div layout:replace="forms/account/inventory(inventory=${wip.inventory})"></div></td>
+			    		<td th:text="${wip.inventory.name}" />
+			    		<td th:text="${wip.inventory.color}" />
+			    		<td th:text="${wip.inventory.size}" />
+			    		<td th:text="${wip.inventory.type}" />
+			    		<td th:text="${wip.quantity}" />
+	    			</tr>
+			    </th:block>
+			</tr>
+	    
+		</table>
+		
+		<div layout:replace="view/_footer"></div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:label="${title}"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+	       <!-- Personal  -->
+			    <table>
+					
+			    	<tr>
+						<td><div layout:replace="view/hum/edit"></div></td>
+					</tr>
+					<tr>
+						<td th:text="${organization.name}"></td>
+					</tr>
+					<tr>
+						<td th:text="${organization.business}"></td>
+					</tr>
+					<tr>
+	    				<td><div layout:replace="view/person(person=${organization.owner})"></div></td>
+	    			</tr>
+	    			<tr>
+						<td><div layout:replace="view/contact(contact=${organization.contact})"></div></td>
+					</tr>
+					<tr>
+						<td th:text="${organization.parent}"></td>
+					</tr>
+					<tr>
+						<td th:text="${organization.since}"></td>
+					</tr>
+					
+					<!--tr>
+						<td><div layout:replace="view/hum/person"></div></td>
+					</tr-->
+					
+				</table>
+					
+    </body>
+</html>

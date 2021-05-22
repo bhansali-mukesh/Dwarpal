@@ -1,0 +1,34 @@
+    <table name="printable" border="1">
+    		<tr>
+    			<th colspan="2" th:text="${swayam}" />
+    		</tr>
+    		
+    		<tr>
+    			<td>
+		    		<table border="1" id="lots" th:if="${!lots.empty}">
+			    		<tr>
+			    			<th> DATE </th>
+				    		<th> ITEM </th>
+							<th> NAME </th>
+							<th> QUANTITY </th>
+							<th> AMOUNT </th>
+			    			<th> SENDER </th>
+			    			<th> RECEIVER </th>
+						</tr>
+						
+						<th:block th:each="lot : ${lots}">
+							<tr>
+								<td><div layout:replace="forms/account/date(date=${lot.consignment.date})"></div></td>
+								<td><div layout:replace="forms/account/inventory(inventory=${lot.inventory})"></div></td>
+			    				<td th:text="${lot.inventory.name}" />
+					    		<td th:text="${lot.quantity}" />
+					    		<td th:text="${lot.amount}" /> 
+					    		<td><div layout:replace="forms/account/organization(organization=${lot.consignment.sender})"></div></td>
+					    		<td><div layout:replace="forms/account/organization(organization=${lot.consignment.receiver})"></div></td>
+					    	</tr>
+				    	</th:block>
+				    	
+				    </table>
+				  </td>
+			</tr>
+		</table>

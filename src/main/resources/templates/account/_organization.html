@@ -1,0 +1,74 @@
+    <table name="printable" border="1">
+    		<tr>
+    			<th colspan="2" th:text="${organization}" />
+    		</tr>
+    		
+    		<tr>
+    			<th> RECEIVED </th>
+    			<th> SENT </th>
+    		</tr>
+    		
+    		<tr>
+    			<td>
+		    		<table border="1" id="received" th:if="${!received.empty}">
+			    		<tr>
+			    			<th> DATE </th>
+			    			<th> SENDER </th>
+			    			<th> ITEM </th>
+				    		<th> NAME </th>
+							<th> QUANTITY </th>
+							<th> AMOUNT </th>
+						</tr>
+						
+						<th:block th:each="lot : ${received}">
+							<tr>
+
+								<td><div layout:replace="forms/account/date(date=${lot.consignment.date})"></div></td>
+								<td><div layout:replace="forms/account/organization(organization=${lot.consignment.sender})"></div></td>
+								<td><div layout:replace="forms/account/inventory(inventory=${lot.inventory})"></div></td>
+					    		<td th:text="${lot.inventory.name}" />
+					    		<td th:text="${lot.quantity}" />
+					    		<td th:text="${lot.amount}" />
+				    		</tr>
+				    	</th:block>
+				    	
+				    	<tr>
+			    			<td colspan="5" th:text="Total" />
+			    			<td th:text="${#aggregates.sum(received.![amount])}" />
+			    		</tr>
+			    		
+				    </table>
+				  </td>
+			 
+				  <td>
+			   		<table border="1" id="sent" th:if="${!sent.empty}">
+				    		<tr>
+				    			<th> DATE </th>
+				    			<th> RECEIVER </th>
+				    			<th> ITEM </th>
+					    		<th> NAME </th>
+								<th> QUANTITY </th>
+								<th> AMOUNT </th>
+							</tr>
+							
+							<th:block th:each="lot : ${sent}">
+								<tr>
+								
+									<td><div layout:replace="forms/account/date(date=${lot.consignment.date})"></div></td>
+									<td><div layout:replace="forms/account/organization(organization=${lot.consignment.receiver})"></div></td>
+									<td><div layout:replace="forms/account/inventory(inventory=${lot.inventory})"></div></td>
+									<td th:text="${lot.inventory.name}" />
+						    		<td th:text="${lot.quantity}" />
+						    		<td th:text="${lot.amount}" />
+					    		</tr>
+					    	</th:block>
+					    	
+					    	<tr>
+				    			<td colspan="5" th:text="Total" />
+				    			<td th:text="${#aggregates.sum(sent.![amount])}" />
+				    		</tr>
+				    		
+					    </table>
+				  </td>
+			</tr>
+		</table>

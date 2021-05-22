@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="Login"></title>
+        <link rel="stylesheet" href="/css/styles.css"/>
+        <meta charset="UTF-8" />
+    </head>
+
+    <body>
+    	<h1 th:text="${message}"></h1>
+    
+    	<div layout:replace="view/_header"></div>
+    
+    	<table width="100%">
+    		<tr>
+    			<td>
+				    <table align="left">
+				    	<tr>
+				    	
+				    		<td><div layout:replace="forms/home/receive(login=${login}, label=Buy, action='\consignment\receive')"></div></td>
+				    		<!--td><div layout:replace="forms/home/process(login=${login})"></div></td-->
+				    		<td><div layout:replace="forms/home/send(login=${login}, label=Sell, action='\consignment\send')"></div></td>
+				    		<td><div layout:replace="forms/home/inventory(login=${login})"></div></td>
+				    		<td><div layout:replace="forms/home/account(login=${login})"></div></td>
+				    		
+						</tr>
+					</table>
+				</td>
+				<td>
+					<table align="right" border="1">
+						<tr><td><a target="_blank" href="/persons">Persons</a></td></tr>
+						<tr><td><a target="_blank" href="/soils">Places</a></td></tr>
+						<tr><td><a target="_blank" href="/businesses">Businesses</a></td></tr>
+						<tr><td><a target="_blank" href="/categories">Categories</a></td></tr>
+						<tr><td><a target="_blank" href="/organizations">Organizations</a></td></tr>
+						<tr><td><a target="_blank" href="/types">Inventory Types</a></td></tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		
+		<div layout:replace="view/_footer"></div>
+		
+    </body>
+
+</html>

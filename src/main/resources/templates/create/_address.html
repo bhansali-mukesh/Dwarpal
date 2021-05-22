@@ -1,0 +1,22 @@
+
+	<table th:object="${address}">
+        <tr>
+            <td> ZIP </td>
+            <td> <input type="text" th:field="*{zip}" /> </td>
+            <td th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}">Zip Error</td>
+        </tr>
+        <tr>
+            <td> Description </td>
+            <td> <input type="text" th:field="*{description}" /> </td>
+            <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</td>
+        </tr>
+        <tr>
+            <td> Place </td>
+            <td>
+	            <select th:field="*{soil}" >
+					<option th:each="soil : ${soils}" th:value="${soil.id}" th:text="${soil.name}"></option>
+				</select>
+			</td>
+            <td><a href="/create/soil" target="_blank"> Add </a></td>
+        </tr>
+   </table>

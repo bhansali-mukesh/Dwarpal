@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="Login"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+    	
+    	<div layout:replace="view/_header"></div>
+    
+	    <table>
+	    	<tr>
+	    		
+	    		<td><div layout:replace="forms/inventory/available"></div></td>
+	    		<td><div layout:replace="forms/inventory/received"></div></td>
+	    		<td><div layout:replace="forms/inventory/sent"></div></td>
+	    		
+			</tr>
+		</table>
+	
+    </body>
+
+</html>

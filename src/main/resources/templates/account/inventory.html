@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title th:text="${title}"></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/styles.css"/>
+    </head>
+
+    <body>
+    
+	    <div layout:replace="view/_header"></div>  
+		<table border="1" id="lots" th:if="${!lots.empty}">
+		
+			<tr>
+				<th> DATE </th>
+				<th> ITEM </th>
+				<th> NAME </th>
+				<th> SENDER </th>
+				<th> RECEIVER </th>
+				<th> QUANTITY </th>
+			</tr>
+			
+			<th:block th:each="lot : ${lots}">
+				<tr>
+					<td><div layout:replace="forms/account/date(date=${lot.consignment.date})"></div></td>
+					<td><div layout:replace="forms/account/inventory(inventory=${lot.inventory})"></div></td>
+					<td th:text="${lot.inventory.name}" />
+		    		<td><div layout:replace="forms/account/organization(organization=${lot.consignment.sender})"></div></td>
+		    		<td><div layout:replace="forms/account/organization(organization=${lot.consignment.receiver})"></div></td>
+			    	<td th:text="${lot.quantity}" />
+	    		</tr>
+	    	</th:block>
+	    	
+	    	<tr>
+	    		<td colspan="5" th:text="Available" />
+	    		<td th:if="${available == null}" th:text="0" />
+	    		<td th:if="${available}" th:text="${available.quantity}" />
+	    	</tr>
+	    	
+	    </table>
+	    <div layout:replace="view/_footer"></div>
+
+	</body>
+		
+</html>
+	

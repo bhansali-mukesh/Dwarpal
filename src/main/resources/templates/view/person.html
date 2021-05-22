@@ -1,0 +1,31 @@
+<!-- Person -->
+        <div th:if="${person}" th:object="${person}">
+            <table>
+                <tr>
+          			<td th:if="${person}">
+		          			<table border="1">
+		          				<tr>
+		          					<td> <div layout:replace="view/hum/name"></div> </td>
+		          					<td><div layout:replace="view/tree"></div></td>
+		          					<td th:if="*{spouse}"><div layout:replace="view/hum/name(person=${person.spouse})"></div></td>
+		        					<td th:if="*{spouse}"><div layout:replace="view/hum/tree(person=${person.spouse})"></div></td>
+		          				</tr>
+		          				<tr>
+		          					<td th:text="*{gender}"></td>
+		          					<td th:if="*{dob}" th:text="*{dob}"></td>
+		          				</tr>
+							</table>
+					</td>
+					
+					
+                </tr>
+			
+                <tr>
+                    <td th:if="*{father}"><div layout:replace="view/hum/name(person=${person.father})"></div></td>
+                    <td th:if="*{father}"><div layout:replace="view/hum/tree(person=${person.father})"></div></td>
+					<td th:if="*{mother}"><div layout:replace="view/hum/name(person=${person.mother})"></div></td>
+					<td th:if="*{mother}"><div layout:replace="view/hum/tree(person=${person.mother})"></div></td>
+                </tr>
+				
+            </table>
+        </div>

@@ -1,0 +1,5 @@
+<div th:fragment="example" th:object="${person}">
+  <form method="post" th:action="@{/authentication}">
+										<label> Example </label>   <input type="submit" th:value="${person}"/>
+									</form>
+</div>

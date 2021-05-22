@@ -1,0 +1,27 @@
+
+    <table th:object="${organization.contact}">
+        <tr>
+            <td> <input type="hidden" th:field="*{id}" /> </td>
+        </tr>
+        <tr>
+            <td> Phone </td>
+            <td> <input type="text" th:field="*{phone}" /> </td>
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Phone Error</td>
+        </tr>
+        <tr>
+	        <td> Fax </td>
+	        <td> <input type="text" th:field="*{fax}" /> </td>
+	        <td th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}">Fax Error</td>
+	    </tr>
+	    <tr>
+	        <td> Email </td>
+	        <td> <input type="text" th:field="*{email}" /> </td>
+	        <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Fax Error</td>
+	    </tr>
+	    
+	    <tr>
+	    	<td>
+	    		<table th:object="${organization.contact.address}" layout:include="create/_address"></table>
+	    	</td>
+	    </tr>
+    </table>
